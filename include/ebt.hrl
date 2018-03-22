@@ -24,7 +24,9 @@
 
     precondition :: undefined | {module(), atom()} | atom() | fun((ebt_node()) -> boolean()),  % 节点准入条件,
 
-    childs = [] :: list(ebt_node())                 % 节点的孩子节点
+    childs = [] :: list(ebt_node()),                % 节点的孩子节点
+    
+    param  = #{} :: #{}                             % 节点的参数
 }).
 -type ebt_node() :: #ebt_node{}.
 

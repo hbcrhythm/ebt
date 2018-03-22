@@ -17,6 +17,7 @@
 -export([do_evaluate/1, tick/1]).
 
 do_evaluate(#ebt_node{id = Id, childs = Childs}) ->
+    io:format("ebt_priority_selector ~n"),
     Data = ?EBT_NODE_DATA(Id),
     LastActiveNode = maps:get(active_child, Data, undefined),
     case select(Childs, LastActiveNode) of
@@ -24,6 +25,7 @@ do_evaluate(#ebt_node{id = Id, childs = Childs}) ->
             false;
         {true, ActiveChild} ->
             Data2 = Data#{active_child => ActiveChild},
+            io:format("Data2 ~p ~n",[Data2]),
             ?EBT_NODE_DATA(Id, Data2),
             true
     end.

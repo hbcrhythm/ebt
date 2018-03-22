@@ -10,10 +10,11 @@
 -include("ebt.hrl").
 
 %% API
--export([init/1, run/1, destroy/1]).
+-export([init/1, init/2, run/1, destroy/1]).
 
 %% (数据)初始化
 -callback init(Root :: ebt_node())-> {ok, RootNew :: ebt_node()}.
+-callback init(Root :: ebt_node(), DParam :: #{}) -> {ok, RootNew :: ebt_node()}.
 
 %% 运行行为树
 -callback run(Node :: ebt_node()) -> ok.
@@ -22,15 +23,18 @@
 -callback destroy() -> ok.
 
 init(#ebt_node{} = Root) ->
-    {ok, init_node(Root)}.
+    {ok, init_node(Root, #{})}.
+init(#ebt_node{} = Root, DParam) ->
+	{ok, init_node(Root, DParam)}.
 
-init_node(#ebt_node{mod = RootMod, childs = Childs} = Root) ->
-    RootMod:init(Root#ebt_node{id = make_ref(), childs = [init_node(Child) || #ebt_node{} = Child <- Childs]}).
+init_node(#ebt_node{mod = RootMod, childs = Childs, param = Param} = Root, DParam) ->
+	Param2 = Param#{dynamic => DParam},
+    RootMod:init(Root#ebt_node{id = make_ref(), childs = [init_node(Child, DParam) || #ebt_node{} = Child <- Childs], param = Param2}).
 
 run(#ebt_node{mod = Mod} = Node) ->
-    case Mod:evaluate(Node) of
+    case Mod:evaluate(Node) of		%% 评估是否有子节点可以执行
         true ->
-            Mod:tick(Node);
+            Mod:tick(Node);			%% 执行对应节点的逻辑
         false ->
             false
     end.

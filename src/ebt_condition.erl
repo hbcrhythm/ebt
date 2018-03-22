@@ -28,7 +28,7 @@
 %% API functions
 %%====================================================================
 tick(#ebt_node{mod = Mod} = Node) ->
-    case Mod:do_check(Node) of
+    case Mod:do_check(Node) of		%% 处理逻辑执行的结果。
         true ->
             ?EBT_RESULT_FINISHED;
         false ->
