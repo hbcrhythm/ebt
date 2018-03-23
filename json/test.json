@@ -10,12 +10,12 @@
     "45b1750f-8326-432e-ac79-6578554e36ab": {
       "id": "45b1750f-8326-432e-ac79-6578554e36ab",
       "name": "Succeeder",
-      "title": "ActionTrace",
-      "description": "追击目标",
+      "title": "ActionHover",
+      "description": "徘徊",
       "properties": {},
       "display": {
-        "x": -192,
-        "y": 132
+        "x": 0,
+        "y": 168
       }
     },
     "658f2ce8-3553-442b-8a0d-c2238df06756": {
@@ -30,27 +30,7 @@
       },
       "children": [
         "f4cb37c5-7609-4ceb-94ca-64840f705467",
-        "45b1750f-8326-432e-ac79-6578554e36ab"
-      ]
-    },
-    "d35649f0-639f-4f07-8681-a94020cf988f": {
-      "id": "d35649f0-639f-4f07-8681-a94020cf988f",
-      "name": "RandomSelector",
-      "title": "RandomSelector",
-      "description": "随机选择节点",
-      "properties": {
-        "1": 20,
-        "2": 30,
-        "3": 50
-      },
-      "display": {
-        "x": -48,
-        "y": -156
-      },
-      "children": [
-        "577ab31d-ac09-4d35-8214-d22d51b9070e",
-        "60482e56-01f4-4d15-a463-b9d215377f1c",
-        "638c544c-57c2-49d8-8641-311b748a4586"
+        "014d1010-68fb-46b0-80c2-591e672a9520"
       ]
     },
     "f4cb37c5-7609-4ceb-94ca-64840f705467": {
@@ -60,12 +40,12 @@
       "description": "检测警戒范围",
       "properties": {},
       "display": {
-        "x": -252,
+        "x": -264,
         "y": -192
       },
       "children": [
         "a6d98934-ec2d-44fa-98a9-ed55c9af230c",
-        "d35649f0-639f-4f07-8681-a94020cf988f"
+        "577ab31d-ac09-4d35-8214-d22d51b9070e"
       ]
     },
     "577ab31d-ac09-4d35-8214-d22d51b9070e": {
@@ -75,24 +55,13 @@
       "description": "选择节点",
       "properties": {},
       "display": {
-        "x": 60,
-        "y": -240
+        "x": -120,
+        "y": -192
       },
       "children": [
         "bd5b0365-293a-47b2-b86c-1f419c146627",
         "158a0f11-7350-4a10-b8ae-672993f7dee8"
       ]
-    },
-    "60482e56-01f4-4d15-a463-b9d215377f1c": {
-      "id": "60482e56-01f4-4d15-a463-b9d215377f1c",
-      "name": "Action",
-      "title": "ActionHover",
-      "description": "徘徊",
-      "properties": {},
-      "display": {
-        "x": 108,
-        "y": -36
-      }
     },
     "638c544c-57c2-49d8-8641-311b748a4586": {
       "id": "638c544c-57c2-49d8-8641-311b748a4586",
@@ -101,8 +70,8 @@
       "description": "发呆",
       "properties": {},
       "display": {
-        "x": 108,
-        "y": 36
+        "x": 0,
+        "y": 48
       }
     },
     "bd5b0365-293a-47b2-b86c-1f419c146627": {
@@ -112,8 +81,8 @@
       "description": "",
       "properties": {},
       "display": {
-        "x": 156,
-        "y": -324
+        "x": 24,
+        "y": -252
       },
       "children": [
         "2808643c-86c1-40ce-89c0-74b467991e13",
@@ -127,8 +96,8 @@
       "description": "追击目标",
       "properties": {},
       "display": {
-        "x": 216,
-        "y": -168
+        "x": 84,
+        "y": -84
       }
     },
     "2808643c-86c1-40ce-89c0-74b467991e13": {
@@ -138,8 +107,8 @@
       "description": "检测是否在攻击距离",
       "properties": {},
       "display": {
-        "x": 336,
-        "y": -384
+        "x": 180,
+        "y": -300
       }
     },
     "22d13cb8-ad7a-4ce0-bb3d-4bebc71dde3a": {
@@ -149,8 +118,8 @@
       "description": "释放技能",
       "properties": {},
       "display": {
-        "x": 312,
-        "y": -276
+        "x": 180,
+        "y": -204
       }
     },
     "a6d98934-ec2d-44fa-98a9-ed55c9af230c": {
@@ -160,9 +129,28 @@
       "description": "检测警戒范围",
       "properties": {},
       "display": {
-        "x": -96,
+        "x": -72,
         "y": -348
       }
+    },
+    "014d1010-68fb-46b0-80c2-591e672a9520": {
+      "id": "014d1010-68fb-46b0-80c2-591e672a9520",
+      "name": "RandomSelector",
+      "title": "RandomSelector",
+      "description": "随机选择节点",
+      "properties": {
+        "1": 20,
+        "2": 30,
+        "3": 50
+      },
+      "display": {
+        "x": -204,
+        "y": 108
+      },
+      "children": [
+        "638c544c-57c2-49d8-8641-311b748a4586",
+        "45b1750f-8326-432e-ac79-6578554e36ab"
+      ]
     }
   },
   "display": {
