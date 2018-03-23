@@ -1,4 +1,0 @@
-[{<<"rfc4627_jsonrpc">>,
-  {git,"https://github.com/tonyg/erlang-rfc4627.git",
-       {ref,"1614d95831567ae8b060ce484f7b291048edec2d"}},
-  0}].
