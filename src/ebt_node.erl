@@ -56,13 +56,11 @@ precondition(#ebt_node{precondition = Precondition} = Node) when is_atom(Precond
 %% @doc 评估是否执行
 -spec evaluate(Node :: ebt_node()) -> Result :: boolean().
 evaluate(#ebt_node{mod = Mod} = Node) ->
-    io:format(" evaluate mod ~p ~n",[Mod]),
     Mod:precondition(Node) andalso Mod:do_evaluate(Node).
 
 %% @doc 执行验证
 -spec do_evaluate(Node :: ebt_node()) -> Result :: boolean().
-do_evaluate(#ebt_node{mod = Mod}) ->
-    io:format(" do_evaluate ebt_node ~p ~n",[Mod]),
+do_evaluate(#ebt_node{}) ->
     true.
 
 %% @doc 执行节点操作

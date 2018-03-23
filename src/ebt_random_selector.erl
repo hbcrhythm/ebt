@@ -13,10 +13,9 @@
 -include("ebt_transform.hrl").
 
 %% API
--export([init/1, do_evaluate/1, tick/1]).
+-export([do_evaluate/1, tick/1]).
 
 do_evaluate(#ebt_node{id = Id, childs = Childs, param = #{static := SParam}}) ->
-    io:format("ebt_random_selector ~n"),
     Data = ?EBT_NODE_DATA(Id),
     LastActiveNode = maps:get(active_child, Data, undefined),
     case LastActiveNode of
@@ -32,7 +31,7 @@ do_evaluate(#ebt_node{id = Id, childs = Childs, param = #{static := SParam}}) ->
                 undefined ->
                     false;
                 ActiveId ->
-                    ActiveChild = lists:nth(Random, Childs),
+                    ActiveChild = lists:nth(ActiveId, Childs),
                     Data2 = Data#{active_child => ActiveChild},
                     ?EBT_NODE_DATA(Id, Data2),
                     true
