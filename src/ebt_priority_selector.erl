@@ -24,7 +24,7 @@ do_evaluate(#ebt_node{id = Id, childs = Childs}) ->
             false;
         {true, ActiveChild} ->
             Data2 = Data#{active_child => ActiveChild},
-            io:format("Data2 ~p ~n",[Data2]),
+            % io:format("Data2 ~p ~n",[Data2]),
             ?EBT_NODE_DATA(Id, Data2),
             true
     end.
