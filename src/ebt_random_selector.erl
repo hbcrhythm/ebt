@@ -26,15 +26,21 @@ do_evaluate(#ebt_node{id = Id, childs = Childs, param = #{static := SParam}}) ->
             ?EBT_NODE_DATA(Id, Data2),
             true;
         undefined ->
-            Random = rand:uniform(100),
-            case select(SParam, Random) of
-                undefined ->
+            case length(SParam) =/= length(Childs) of
+                true ->
+                    %% ai 配置错误
                     false;
-                ActiveId ->
-                    ActiveChild = lists:nth(ActiveId, length(Childs)),
-                    Data2 = Data#{active_child => ActiveChild},
-                    ?EBT_NODE_DATA(Id, Data2),
-                    true
+                false ->
+                    Random = rand:uniform(100),
+                    case select(SParam, Random) of
+                        undefined ->
+                            false;
+                        ActiveId ->
+                            ActiveChild = lists:nth(ActiveId, length(Childs)),
+                            Data2 = Data#{active_child => ActiveChild},
+                            ?EBT_NODE_DATA(Id, Data2),
+                            true
+                    end
             end;
         #ebt_node{} ->
             true
