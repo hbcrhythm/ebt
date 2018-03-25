@@ -31,7 +31,7 @@ do_evaluate(#ebt_node{id = Id, childs = Childs, param = #{static := SParam}}) ->
                 undefined ->
                     false;
                 ActiveId ->
-                    ActiveChild = lists:nth(ActiveId, Childs),
+                    ActiveChild = lists:nth(ActiveId, length(Childs)),
                     Data2 = Data#{active_child => ActiveChild},
                     ?EBT_NODE_DATA(Id, Data2),
                     true
