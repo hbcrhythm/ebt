@@ -4,9 +4,14 @@
         {registered, []},
         {applications,
             [kernel,
-                stdlib
+            stdlib,
+            jsx
             ]},
-        {env, []},
+        {env, [
+            {json_dir, "json"},
+            {erl_dir, "erl"},
+            {m_mfa, {ebt_mod, mod, []} }
+        ]},
         {modules, []},
 
         {contributors, []},
