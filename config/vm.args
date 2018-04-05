@@ -1,0 +1,8 @@
+## Name of the node
+-name hbc@127.0.0.1
+
+## Cookie for distributed erlang
+-setcookie qet
+
+## Eval Expr 
+-eval "ebt:create(test), erlang:halt()."

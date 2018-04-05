@@ -17,7 +17,7 @@ create(JsonFile) ->
 	ErlDir = application:get_env(ebt, erl_dir, ?DEFAULT_ERL_DIR),
 	file:make_dir(ErlDir),
 	JsonDir = application:get_env(ebt, json_dir, ?DEFAULT_JSON_DIR),
-	case file:read_file(JsonDir ++ "/" ++ JsonFile ++ ".json") of
+	case file:read_file(JsonDir ++ "/" ++ to_list(JsonFile) ++ ".json") of
 		{ok, EBinary} ->
 			Json = jsx:decode(EBinary),
 			RootId = get_field_string(Json, "root"),
@@ -27,9 +27,9 @@ create(JsonFile) ->
 			EbtNode = neaten(EbtConfigData),
 
 			EbtNodeString = term_to_string(EbtNode),
-			ModuleString = io_lib:format("%%------------------------------------------------------~n %% Automatic Generation ~n %%-----------------------------------------------------~n-module(~s).~n-author('labihbc@gmail.com').~n~n-export([get/0]).~n~nget() ->~n ",[JsonFile]),
-			file:write_file(ErlDir ++ "/" ++ JsonFile ++ ".erl", ModuleString ++ EbtNodeString ++ "."),
-			io:format("File: [~s] Generation Success ! ~n ",[JsonFile]),
+			ModuleString = io_lib:format("%%------------------------------------------------------~n %% Automatic Generation ~n %%-----------------------------------------------------~n-module(~s).~n-author('labihbc@gmail.com').~n~n-export([get/0]).~n~nget() ->~n ",[to_list(JsonFile)]),
+			file:write_file(ErlDir ++ "/" ++  to_list(JsonFile) ++ ".erl", ModuleString ++ EbtNodeString ++ "."),
+			io:format("File: [~w] Generation Success ! ~n ",[JsonFile]),
 			% EbtNode;
 			ok;
 		_ ->
