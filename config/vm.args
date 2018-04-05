@@ -5,4 +5,4 @@
 -setcookie qet
 
 ## Eval Expr 
--eval "ebt:create(test), erlang:halt()."
+-eval "{ok, Files} = file:list_dir(\"json\"), [ebt:create(File) || File <- Files], erlang:halt()."
