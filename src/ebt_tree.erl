@@ -31,7 +31,7 @@ init_node(#ebt_node{mod = RootMod, childs = Childs, param = Param} = Root, DPara
 	Param2 = Param#{dynamic => DParam},
     {M, F, A} = application:get_env(ebt, m_mfa, {ebt_mod, mod, []}),
     RootMod2 = erlang:apply(M, F, [RootMod] ++ A),
-    RootMod:init(Root#ebt_node{id = make_ref(), mod = RootMod2, childs = [init_node(Child, DParam) || #ebt_node{} = Child <- Childs], param = Param2}).
+    RootMod2:init(Root#ebt_node{id = make_ref(), mod = RootMod2, childs = [init_node(Child, DParam) || #ebt_node{} = Child <- Childs], param = Param2}).
 
 run(#ebt_node{mod = Mod} = Node) ->
     case Mod:evaluate(Node) of		%% 评估是否有子节点可以执行
