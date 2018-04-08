@@ -29,7 +29,7 @@ init(#ebt_node{} = Root, DParam) ->
 
 init_node(#ebt_node{mod = RootMod, childs = Childs, param = Param} = Root, DParam) ->
 	Param2 = Param#{dynamic => DParam},
-    {M, F, A} = application:get_env(ebt, mod, {ebt_mod, mod, []}),
+    {M, F, A} = application:get_env(ebt, m_mfa, {ebt_mod, mod, []}),
     RootMod = erlang:apply(M, F, [RootMod] ++ A),
     RootMod:init(Root#ebt_node{id = make_ref(), mod = RootMod, childs = [init_node(Child, DParam) || #ebt_node{} = Child <- Childs], param = Param2}).
 
