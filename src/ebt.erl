@@ -27,8 +27,8 @@ create(JsonFile) ->
 			EbtNode = neaten(EbtConfigData),
 
 			EbtNodeString = term_to_string(EbtNode),
-			ModuleString = io_lib:format("%%------------------------------------------------------~n %% Automatic Generation ~n %%-----------------------------------------------------~n-module(~s).~n-author('labihbc@gmail.com').~n~n-export([get/0]).~n~nget() ->~n ",[JsonFile]),
-			file:write_file(ErlDir ++ "/" ++  string:sub_string(JsonFile, 1, string:rstr(JsonFile, ".json") - 1) ++ ".erl", ModuleString ++ EbtNodeString ++ "."),
+			ModuleString = io_lib:format("%%------------------------------------------------------~n %% Automatic Generation ~n %%-----------------------------------------------------~n-module(~s).~n-author('labihbc@gmail.com').~n~n-export([get/0]).~n~nget() ->~n ",[ "ai_" ++ string:sub_string(JsonFile, 1, string:rstr(JsonFile, ".json") - 1)]),
+			file:write_file(ErlDir ++ "/ai_" ++  string:sub_string(JsonFile, 1, string:rstr(JsonFile, ".json") - 1) ++ ".erl", ModuleString ++ EbtNodeString ++ "."),
 			io:format("File: [~s] Generation Success ! ~n ",[JsonFile]),
 			% EbtNode;
 			ok;
