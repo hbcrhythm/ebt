@@ -39,7 +39,7 @@
 %% @doc 节点初始化
 -spec init(Node :: ebt_node()) -> Node :: ebt_node().
 init(#ebt_node{} = Node) ->
-    io:format("node ~p~n",[Node]),
+    % io:format("node ~p~n",[Node]),
     Node.
 
 %% @doc 是否准入判断
