@@ -13,10 +13,10 @@
 -include("ebt_transform.hrl").
 
 %% API
--export([tick/1]).
+-export([tick/1, do_check/1]).
 
 %% API
--compile([export_all]).
+% -compile([export_all]).
 
 %%====================================================================
 %% behaviour callback
